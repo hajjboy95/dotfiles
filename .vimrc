@@ -24,6 +24,8 @@ set autoread
 set encoding=UTF-8
 set t_Co=256
 
+
+
 filetype plugin on
 syntax enable
 
@@ -119,11 +121,17 @@ let g:coc_global_extension = [
                 \'coc-pairs',
                 \'coc-tsserver',
                 \'coc-css',
-                \'coc-highlight'
+                \'coc-yank'
 \]
 
-"coc-highlight setup
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" \'coc-highlight',
+    
+
+"coc-yank 
+nnoremap <silent> <C-y>  :<C-u>CocList -A --normal yank<cr>
+
+" "coc-highlight setup
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "turn off the bell sound
 autocmd GUIEnter * set vb t_vb=
