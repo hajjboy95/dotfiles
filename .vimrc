@@ -61,10 +61,13 @@ call plug#end()
 colorscheme onehalflight
 let g:airline_theme='onehalfdark'
 
+let mapleader=";"
 
-"Open nerdtree automatically on startup
+"NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+nnoremap <Leader>f :NERDTreeFind<cr>
+
 
 "custom mapping
 nnoremap <C-P> :GFiles<cr>
@@ -78,7 +81,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 "leader commands
-let mapleader=";"
 nnoremap <Leader>' :bprev<cr>
 nnoremap <Leader>\ :bnext<cr>
 nnoremap <leader>w :bp<bar>sp<bar>bn<bar>bd<CR>
@@ -162,4 +164,5 @@ let g:ale_linters = {
 let g:ale_fixers = {'javascript': ['standard'], 'typescript': ['standard']}
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
+
 
