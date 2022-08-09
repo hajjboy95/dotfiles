@@ -23,7 +23,16 @@ set ignorecase
 set autoread
 set encoding=UTF-8
 set t_Co=256
+set mouse=a
+set colorcolumn=120
 
+
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
 
 
 filetype plugin on
@@ -39,12 +48,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'mileszs/ack.vim'
-Plug 'kristijanhusak/vim-dadbod-ui'
+" Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'mhinz/vim-signify'
 Plug 'vim-test/vim-test'
-Plug 'puremourning/vimspector'
 Plug 'tpope/vim-fugitive'
-Plug 'psliwka/vim-smoothie'
+" Plug 'psliwka/vim-smoothie'
 Plug 'mbbill/undotree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'dense-analysis/ale'
@@ -58,7 +66,7 @@ call plug#end()
 "let g:airline_theme='gruvbox'
 
 " onehalflightsetup
-colorscheme onehalflight
+colorscheme  onehalfdark
 let g:airline_theme='onehalfdark'
 
 let mapleader=";"
@@ -75,6 +83,7 @@ nnoremap <C-J> <C-W>j
 nnoremap<C-K> <C-W>k
 nnoremap<C-l> <C-W>l
 nnoremap<C-h> <C-W>h
+nnoremap<C-@> <C-6s
 
 "vim-airline config
 let g:airline#extensions#tabline#enabled = 1
@@ -89,18 +98,6 @@ nnoremap <leader>w :bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <Leader>tf :TestFile<cr>
 nnoremap <Leader>tn :TestNearest<cr>
 nnoremap <Leader>ts :TestSuite<cr>
-let g:vimspector_enable_mappings = 'HUMAN'
-
-"vimspector
-nnoremap <Leader>dd :call vimspector#Launch()<cr>
-nnoremap <Leader>de :call vimspector#Reset()<cr>
-nnoremap <Leader>dc :call vimspector#RunToCursor()<cr>
-nnoremap <Leader>dn :call vimspector#Continue()<cr>
-nnoremap <Leader>dl :call vimspector#StepInto()<cr>
-nnoremap <Leader>dj :call vimspector#StepOver()<cr>
-nnoremap <Leader>dk :call vimspector#StepOut()<cr>
-nnoremap <Leader>dc :call vimspector#RunToCursor()<cr>
-nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<cr>
 
 "ack vim setup
 "Use ripgrep for searching as its faster then the default need to have ripgrep
@@ -159,9 +156,9 @@ nnoremap <Leader>u :UndotreeToggle<cr>
 " ale setuo
 let g:ale_linters = {
 \   'javascript': ['standard'],
-\   'typescript': ['standard']
+\   'typescript': ['prettier']
 \}
-let g:ale_fixers = {'javascript': ['standard'], 'typescript': ['standard']}
+let g:ale_fixers = {'javascript': ['standard'] }
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 
